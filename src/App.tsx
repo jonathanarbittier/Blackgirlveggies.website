@@ -1,13 +1,11 @@
 import {
   ArrowRight,
   CalendarDays,
-  ChefHat,
   Clock,
   HeartHandshake,
   Instagram,
-  MapPin,
+  Phone,
   Sparkles,
-  Sprout,
   UtensilsCrossed,
 } from "lucide-react";
 import type { ReactNode } from "react";
@@ -26,13 +24,14 @@ const images = {
   instagramMarket: "/images/picturewithstand.png", // INSTAGRAM_MARKET_POST_IMAGE: replace with real market post image.
 };
 
+const contactHref = "https://instagram.com/blackgirlveggies";
+
 const navItems = ["About", "Menu", "Catering", "Contact"];
 
 const menuItems = [
   {
     title: "Soul Bowl",
-    description:
-      "Vegan chick'n, mac & cheese, greens, black-eyed peas, and sweet potato mash.",
+    description: "Chick'n, mac, greens, peas, and sweet potato mash.",
     image: images.soulBowl,
   },
   {
@@ -60,6 +59,8 @@ const marketStops = [
   },
 ];
 
+const cateringFeatures = ["Vegan", "Gluten-Free", "Organic", "Soy-Free", "Nut-Free"];
+
 const instagramUpdates = [
   {
     title: "Sunday Supper Menu",
@@ -80,30 +81,33 @@ const instagramUpdates = [
 
 function App() {
   return (
-    <div className="min-h-screen bg-cream text-ink">
+    <div className="min-h-screen bg-cream pb-20 text-ink md:pb-0">
       <Header />
       <main>
         <Hero />
+        <QuickActionBar />
         <FeaturedMenu />
-        <Catering />
         <Markets />
+        <Catering />
         <About />
         <InstagramUpdates />
+        <Contact />
       </main>
       <Footer />
+      <MobileStickyCta />
     </div>
   );
 }
 
 function Header() {
   return (
-    <header className="sticky top-0 z-50 border-b border-forest-950/10 bg-cream/90 shadow-sm backdrop-blur">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-50 border-b border-forest-950/10 bg-cream/95 shadow-sm backdrop-blur">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-2.5 sm:gap-4 sm:px-6 sm:py-3 lg:px-8">
         <a href="#top" className="group flex items-center" aria-label="Black Girl Veggies home">
           <img
             src={images.logo}
             alt="Black Girl Veggies Portland Oregon logo"
-            className="h-14 w-14 rounded-full bg-forest-950 object-cover shadow-soft sm:h-16 sm:w-16"
+            className="h-12 w-12 rounded-full bg-forest-950 object-cover shadow-soft sm:h-14 sm:w-14"
           />
         </a>
 
@@ -118,18 +122,12 @@ function Header() {
           ))}
         </nav>
 
+        <ButtonLink href={contactHref} variant="secondary" size="sm" className="px-3 py-2 text-xs sm:px-4 sm:text-sm">
+          Order / Contact
+        </ButtonLink>
+
       </div>
 
-      <nav className="grid grid-cols-4 gap-1 border-t border-forest-950/10 px-2 py-2 text-sm font-semibold text-forest-950 md:hidden">
-        {navItems.map((item) => (
-          <span
-            key={item}
-            className="whitespace-nowrap rounded-md bg-white/65 px-1 py-2 text-center"
-          >
-            {item}
-          </span>
-        ))}
-      </nav>
     </header>
   );
 }
@@ -138,34 +136,39 @@ function Hero() {
   return (
     <section
       id="top"
-      className="relative isolate min-h-[calc(88svh-4rem)] overflow-hidden bg-forest-950 text-cream"
+      className="relative isolate min-h-[64svh] overflow-hidden bg-forest-950 text-cream sm:min-h-[calc(88svh-4rem)]"
     >
       <img
         src={images.hero}
         alt="Vegan soul food bowl with mac and cheese, greens, black-eyed peas, sweet potato mash, and crispy chick'n"
         className="absolute inset-0 h-full w-full object-cover object-center"
       />
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(11,46,19,0.94)_0%,rgba(11,46,19,0.72)_42%,rgba(11,46,19,0.22)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,46,19,0.88)_0%,rgba(11,46,19,0.70)_44%,rgba(11,46,19,0.32)_100%)] sm:bg-[linear-gradient(90deg,rgba(11,46,19,0.94)_0%,rgba(11,46,19,0.72)_42%,rgba(11,46,19,0.22)_100%)]" />
 
-      <div className="relative mx-auto flex max-w-7xl items-center px-4 py-14 sm:px-6 md:py-28 lg:px-8">
-        <div className="max-w-2xl">
-          <h1 className="font-display text-[2.8rem] leading-[1.02] text-cream sm:text-6xl sm:leading-[0.98] lg:text-7xl">
+      <div className="relative mx-auto flex max-w-7xl items-center px-4 py-10 sm:px-6 sm:py-14 md:py-28 lg:px-8">
+        <div className="max-w-xl sm:max-w-2xl">
+          <h1 className="font-display text-4xl leading-[1.04] text-cream sm:text-6xl sm:leading-[0.98] lg:text-7xl">
             Plant-Based Comfort Food in Portland
           </h1>
-          <p className="mt-5 max-w-xl text-base leading-7 text-cream/90 sm:mt-6 sm:text-xl sm:leading-8">
-            Vegan comfort food, farmers market favorites, and catering made
-            with soul
+          <p className="mt-4 max-w-md text-base leading-7 text-cream/90 sm:mt-6 sm:max-w-xl sm:text-xl sm:leading-8">
+            Vegan comfort food and catering made with soul in PDX.
           </p>
 
-          <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row">
+          <div className="mt-9 grid max-w-sm gap-3 sm:mt-8 sm:max-w-none sm:flex sm:flex-row">
             <ButtonLink href="#menu" variant="light">
               <UtensilsCrossed className="h-5 w-5" />
               View Menu
             </ButtonLink>
-            <ButtonLink href="#catering" variant="outlineLight">
+            <ButtonLink href={contactHref} variant="outlineLight" className="hidden sm:inline-flex">
               <HeartHandshake className="h-5 w-5" />
               Catering Inquiry
             </ButtonLink>
+            <a
+              href="#catering"
+              className="inline-flex justify-center text-sm font-bold text-cream underline decoration-cream/35 underline-offset-4 sm:hidden"
+            >
+              Ask about catering
+            </a>
           </div>
         </div>
       </div>
@@ -173,41 +176,65 @@ function Hero() {
   );
 }
 
+function QuickActionBar() {
+  const actions = [
+    { label: "Order", href: contactHref },
+    { label: "Catering", href: "#catering" },
+    { label: "Market Times", href: "#markets" },
+  ];
+
+  return (
+    <section className="bg-cream px-4 py-3 sm:hidden">
+      <div className="grid grid-cols-3 gap-2">
+        {actions.map((action) => (
+          <a
+            key={action.label}
+            href={action.href}
+            className="rounded-full border border-forest-950/10 bg-white px-3 py-2 text-center text-xs font-bold text-forest-950 shadow-sm"
+          >
+            {action.label}
+          </a>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function FeaturedMenu() {
   return (
-    <section id="menu" className="bg-cream px-4 py-20 sm:px-6 lg:px-8">
+    <section id="menu" className="bg-cream px-4 py-12 sm:px-6 sm:py-20 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <div className="mt-3 flex flex-col justify-between gap-5 md:flex-row md:items-end">
+        <div className="mt-1 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
-            <h2 className="font-display text-4xl text-forest-950 sm:text-5xl">
+            <h2 className="font-display text-3xl text-forest-950 sm:text-5xl">
               Featured Menu
             </h2>
-            <p className="mt-4 max-w-2xl text-base leading-7 text-bark/75">
+            <p className="mt-3 max-w-2xl text-sm leading-6 text-bark/75 sm:mt-4 sm:text-base sm:leading-7">
               Soulful vegan plates built for hot market pickup, Sunday supper,
               and trays that make plant-based catering feel generous.
             </p>
           </div>
         </div>
 
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 flex gap-4 overflow-x-auto pb-2 sm:grid sm:grid-cols-2 sm:overflow-visible sm:pb-0 lg:grid-cols-3 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           {menuItems.map((item) => (
             <article
               key={item.title}
-              className="overflow-hidden rounded-lg border border-bark/10 bg-white shadow-soft"
+              className="w-[84vw] max-w-[330px] shrink-0 overflow-hidden rounded-xl border border-bark/10 bg-white shadow-soft sm:w-auto sm:max-w-none"
             >
-              <div className="relative aspect-[4/3] overflow-hidden bg-parchment">
+              <div className="relative h-[205px] overflow-hidden bg-parchment sm:aspect-[4/3] sm:h-auto">
                 <img
                   src={item.image}
                   alt={`${item.title} from Black Girl Veggies`}
-                  className="h-full w-full object-cover transition duration-500 hover:scale-105"
+                  className="h-full w-full object-cover object-center transition duration-500 hover:scale-105"
                 />
               </div>
-              <div className="p-5">
-                <h3 className="font-display text-2xl text-forest-950">{item.title}</h3>
-                <p className="mt-3 min-h-24 text-sm leading-6 text-bark/75">
+              <div className="p-4 sm:p-5">
+                <h3 className="font-display text-xl text-forest-950 sm:text-2xl">{item.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-bark/75">
                   {item.description}
                 </p>
-                <ButtonLink href="#contact" variant="card" size="sm">
+                <ButtonLink href={contactHref} variant="card" size="sm" className="mt-4 py-2">
                   Order
                   <ArrowRight className="h-4 w-4" />
                 </ButtonLink>
@@ -222,27 +249,29 @@ function FeaturedMenu() {
 
 function Catering() {
   return (
-    <section id="catering" className="bg-forest-950 px-4 py-20 text-cream sm:px-6 lg:px-8">
-      <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
-        <div>
-          <h2 className="font-display text-4xl text-cream sm:text-5xl">
+    <section id="catering" className="bg-forest-950 px-4 py-12 text-cream sm:px-6 sm:py-20 lg:px-8">
+      <div className="mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-[0.95fr_1.05fr]">
+        <div className="max-w-xl">
+          <h2 className="font-display text-3xl text-cream sm:text-5xl">
             Catering Now Available
           </h2>
-          <p className="mt-5 text-lg leading-8 text-cream/85">
-            Bring plant-based comfort food to birthdays, corporate events,
-            fundraisers, graduations, retirements, baby showers, grand openings,
-            and private events.
+          <p className="mt-4 text-base leading-7 text-cream/85 sm:mt-5 sm:text-lg sm:leading-8">
+            Bring plant-based comfort food to birthdays, events, office lunches, markets, and private gatherings.
           </p>
-          <p className="mt-4 text-base leading-7 text-cream/70">
-            Vegan comfort-food trays can be planned around gluten-free,
-            soy-free, nut-free, organic, grain-free, and refined sugar-free
-            needs where appropriate.
-          </p>
-
-          <div className="mt-8">
-            <ButtonLink href="#contact" variant="light">
+          <div className="mt-5 flex flex-wrap gap-2">
+            {cateringFeatures.map((feature) => (
+              <span
+                key={feature}
+                className="rounded-full border border-cream/20 bg-cream/10 px-3 py-1.5 text-xs font-bold text-cream"
+              >
+                {feature}
+              </span>
+            ))}
+          </div>
+          <div className="mt-7">
+            <ButtonLink href={contactHref} variant="light" className="w-full sm:w-auto">
               <Sparkles className="h-5 w-5" />
-              Request Catering Info
+              Ask About Catering
             </ButtonLink>
           </div>
         </div>
@@ -251,7 +280,7 @@ function Catering() {
           <img
             src={images.catering}
             alt="Catering trays of vegan comfort food"
-            className="relative aspect-[5/4] w-full rounded-lg object-cover shadow-warm"
+            className="relative aspect-[4/3] w-full rounded-xl object-cover object-center shadow-warm sm:aspect-[5/4]"
           />
         </div>
       </div>
@@ -261,43 +290,50 @@ function Catering() {
 
 function Markets() {
   return (
-    <section id="markets" className="bg-parchment px-4 py-20 sm:px-6 lg:px-8">
-      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-center">
-        <div className="order-2 lg:order-1">
-          <h2 className="font-display text-4xl text-forest-950 sm:text-5xl">
+    <section id="markets" className="bg-parchment px-4 py-12 sm:px-6 sm:py-20 lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-center">
+        <div className="order-1 lg:order-1">
+          <h2 className="font-display text-3xl text-forest-950 sm:text-5xl">
             Find Us Around Portland
           </h2>
-          <p className="mt-4 max-w-2xl text-base leading-7 text-bark/75">
+          <p className="mt-3 max-w-2xl text-sm leading-6 text-bark/75 sm:mt-4 sm:text-base sm:leading-7">
             Follow Instagram for weekly menus, Sunday supper updates, and order
             availability.
           </p>
 
-          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+          <div className="mt-6 grid gap-3 sm:grid-cols-2 sm:gap-4">
             {marketStops.map((market) => (
               <article
                 key={market.name}
-                className="rounded-lg border border-bark/10 bg-cream p-5 shadow-soft"
+                className="rounded-xl border border-bark/10 bg-cream p-4 shadow-soft sm:p-5"
               >
-                <div className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-md bg-forest-950 text-cream">
-                  <CalendarDays className="h-5 w-5" />
+                <div className="mb-4 inline-flex h-9 w-9 items-center justify-center rounded-full bg-forest-950 text-cream">
+                  <CalendarDays className="h-4 w-4" />
                 </div>
-                <h3 className="font-display text-2xl text-forest-950">
+                <h3 className="font-display text-xl text-forest-950 sm:text-2xl">
                   {market.name}
                 </h3>
-                <p className="mt-3 flex items-center gap-2 font-semibold text-bark">
+                <p className="mt-2 flex items-center gap-2 text-sm font-semibold text-bark sm:mt-3 sm:text-base">
                   <Clock className="h-4 w-4 text-forest-700" />
                   {market.day}, {market.time}
                 </p>
               </article>
             ))}
           </div>
+
+          <a
+            href={contactHref}
+            className="mt-4 inline-flex text-sm font-semibold text-forest-700 underline decoration-forest-700/30 underline-offset-4 hover:text-forest-950"
+          >
+            Follow Instagram for weekly menus.
+          </a>
         </div>
 
-        <div className="order-1 lg:order-2">
+        <div className="order-2 lg:order-2">
           <img
             src={images.market}
             alt="Black Girl Veggies style farmers market booth in Portland"
-            className="aspect-[4/3] w-full rounded-lg object-cover object-[50%_20%] shadow-warm"
+            className="aspect-[4/3] w-full rounded-xl object-cover object-[50%_20%] shadow-warm"
           />
         </div>
       </div>
@@ -307,26 +343,23 @@ function Markets() {
 
 function About() {
   return (
-    <section id="about" className="bg-cream px-4 py-20 sm:px-6 lg:px-8">
-      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <img
-            src={images.owner}
-            alt="Friendly Portland farmers market food vendor"
-            className="aspect-[4/5] w-full rounded-lg object-cover shadow-warm"
-          />
-        <div>
-          <h2 className="font-display text-4xl text-forest-950 sm:text-5xl">
+    <section id="about" className="bg-cream px-4 py-12 sm:px-6 sm:py-20 lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+        <img
+          src={images.owner}
+          alt="Friendly Portland farmers market food vendor"
+          className="order-2 aspect-[4/3] w-full rounded-xl object-cover shadow-warm sm:aspect-[4/5] lg:order-1"
+        />
+        <div className="order-1 lg:order-2">
+          <h2 className="font-display text-3xl text-forest-950 sm:text-5xl">
             Comfort Food, Made Plant-Based
           </h2>
-          <div className="mt-5 space-y-4 text-base leading-8 text-bark/75">
+          <div className="mt-4 space-y-3 text-base leading-7 text-bark/75 sm:mt-5 sm:space-y-4 sm:leading-8">
             <p>
               Black Girl Veggies brings vegan comfort food to Portland with the
-              kind of meals that feel warm, filling, and made with care. From
-              soul bowls and vegan mac to crispy chick’n and Sunday supper
-              specials, every plate is built around bold flavor, fresh
-              ingredients, and food that brings people together.
+              kind of meals that feel warm, filling, and made with care. From soul bowls to catering trays, everything is built around bold flavor, community, and food that brings people together.
             </p>
-            <p>
+            <p className="hidden sm:block">
               Find us at local markets, follow along for weekly menus, or
               reach out for catering and special orders. Whether you’re
               stopping by for lunch or planning an event, Black Girl Veggies
@@ -341,34 +374,34 @@ function About() {
 
 function InstagramUpdates() {
   return (
-    <section className="bg-forest-800 px-4 py-20 text-cream sm:px-6 lg:px-8">
+    <section className="hidden bg-forest-800 px-4 py-12 text-cream sm:block sm:px-6 sm:py-20 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
+        <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
-            <h2 className="font-display text-4xl text-cream sm:text-5xl">
+            <h2 className="font-display text-3xl text-cream sm:text-5xl">
               Fresh From the Feed
             </h2>
           </div>
-          <ButtonLink href="https://instagram.com/blackgirlveggies" variant="outlineLight">
+          <ButtonLink href={contactHref} variant="outlineLight" size="sm" className="self-start">
             <Instagram className="h-5 w-5" />
             Follow @blackgirlveggies
           </ButtonLink>
         </div>
 
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
+        <div className="mt-8 grid gap-4 md:grid-cols-3">
           {instagramUpdates.map((update) => (
             <article
               key={update.title}
-              className="overflow-hidden rounded-lg border border-cream/15 bg-cream/10 shadow-soft"
+              className="overflow-hidden rounded-xl border border-cream/15 bg-cream/10 shadow-soft"
             >
               <img
                 src={update.image}
                 alt={`${update.title} update`}
-                className="aspect-square w-full object-cover"
+                className="aspect-[4/3] w-full object-cover object-center"
               />
-              <div className="p-5">
-                <h3 className="font-display text-2xl text-cream">{update.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-cream/75">{update.note}</p>
+              <div className="p-4 sm:p-5">
+                <h3 className="font-display text-xl text-cream sm:text-2xl">{update.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-cream/75">{update.note}</p>
               </div>
             </article>
           ))}
@@ -378,23 +411,52 @@ function InstagramUpdates() {
   );
 }
 
+function Contact() {
+  return (
+    <section id="contact" className="bg-cream px-4 py-12 sm:px-6 sm:py-20 lg:px-8">
+      <div className="mx-auto max-w-3xl text-center">
+        <h2 className="font-display text-3xl text-forest-950 sm:text-5xl">
+          Ready to Order?
+        </h2>
+        <p className="mx-auto mt-3 max-w-xl text-base leading-7 text-bark/75">
+          Message us for market pickup, weekly plates, and catering inquiries.
+        </p>
+        <div className="mt-6 grid gap-3 sm:grid-cols-3">
+          <ButtonLink href={contactHref} variant="secondary">
+            <Instagram className="h-5 w-5" />
+            DM on Instagram
+          </ButtonLink>
+          <ButtonLink href="tel:+15035161422" variant="secondary">
+            <Phone className="h-5 w-5" />
+            Call / Text
+          </ButtonLink>
+          <ButtonLink href={contactHref} variant="secondary">
+            <HeartHandshake className="h-5 w-5" />
+            Catering Inquiry
+          </ButtonLink>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Footer() {
   return (
-    <footer className="bg-forest-950 px-4 py-10 text-cream sm:px-6 lg:px-8">
-      <div className="mx-auto flex max-w-7xl flex-col gap-6 md:flex-row md:items-center md:justify-between">
-        <div>
+    <footer className="bg-forest-950 px-4 py-8 text-cream sm:px-6 sm:py-10 lg:px-8">
+      <div className="mx-auto flex max-w-7xl flex-col gap-4 text-center md:flex-row md:items-center md:justify-between md:text-left">
+        <div className="flex flex-col items-center md:items-start">
           <img
             src={images.logo}
             alt="Black Girl Veggies Portland Oregon logo"
-            className="h-16 w-16 rounded-full bg-forest-950 object-cover"
+            className="h-14 w-14 rounded-full bg-forest-950 object-cover sm:h-16 sm:w-16"
           />
           <p className="mt-1 text-sm text-cream/70">
             Plant-Based Comfort Food in PDX · Proudly Black-Owned
           </p>
         </div>
-        <div className="flex flex-col gap-3 text-sm text-cream/70 sm:flex-row sm:items-center">
+        <div className="flex flex-col gap-2 text-sm text-cream/70 sm:flex-row sm:items-center md:justify-end">
           <a
-            href="https://instagram.com/blackgirlveggies"
+            href={contactHref}
             className="inline-flex items-center gap-2 font-semibold text-cream transition hover:text-herb"
           >
             <Instagram className="h-4 w-4" />
@@ -407,6 +469,16 @@ function Footer() {
   );
 }
 
+function MobileStickyCta() {
+  return (
+    <div className="pointer-events-none fixed inset-x-0 bottom-3 z-50 flex justify-center px-4 md:hidden">
+      <ButtonLink href={contactHref} variant="secondary" size="sm" className="pointer-events-auto px-6 shadow-[0_10px_30px_rgba(11,46,19,0.28)]">
+        Order / Contact
+      </ButtonLink>
+    </div>
+  );
+}
+
 type ButtonVariant = "primary" | "secondary" | "light" | "outlineLight" | "card";
 type ButtonSize = "default" | "sm";
 
@@ -415,14 +487,16 @@ function ButtonLink({
   children,
   variant = "primary",
   size = "default",
+  className = "",
 }: {
   href: string;
   children: ReactNode;
   variant?: ButtonVariant;
   size?: ButtonSize;
+  className?: string;
 }) {
   const base =
-    "inline-flex items-center justify-center gap-2 rounded-md font-bold transition focus:outline-none focus:ring-2 focus:ring-honey focus:ring-offset-2";
+    "inline-flex items-center justify-center gap-2 rounded-full font-bold transition focus:outline-none focus:ring-2 focus:ring-honey focus:ring-offset-2 sm:rounded-md";
   const sizes = {
     default: "px-5 py-3 text-sm sm:text-base",
     sm: "px-4 py-2.5 text-sm",
@@ -437,7 +511,7 @@ function ButtonLink({
   };
 
   return (
-    <a href={href} className={`${base} ${sizes[size]} ${variants[variant]}`}>
+    <a href={href} className={`${base} ${sizes[size]} ${variants[variant]} ${className}`}>
       {children}
     </a>
   );
