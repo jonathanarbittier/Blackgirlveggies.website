@@ -125,7 +125,7 @@ function Header() {
 
         <button
           type="button"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-forest-950/10 bg-white text-forest-950 shadow-sm md:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-forest-950/15 bg-white text-forest-950 shadow-soft md:hidden"
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           aria-expanded={isMenuOpen}
           onClick={() => setIsMenuOpen((open) => !open)}
@@ -154,28 +154,37 @@ function Hero() {
   return (
     <section
       id="top"
-      className="relative isolate min-h-[64svh] overflow-hidden bg-forest-950 text-cream sm:min-h-[calc(88svh-4rem)]"
+      className="relative isolate min-h-[80svh] overflow-hidden bg-forest-950 text-cream sm:min-h-[calc(88svh-4rem)]"
     >
       <img
         src={images.hero}
         alt="Vegan soul food bowl with mac and cheese, greens, black-eyed peas, sweet potato mash, and crispy chick'n"
-        className="absolute inset-0 h-full w-full object-cover object-center"
+        className="absolute inset-0 h-full w-full object-cover object-[65%_center] sm:object-center"
       />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,46,19,0.88)_0%,rgba(11,46,19,0.70)_44%,rgba(11,46,19,0.32)_100%)] sm:bg-[linear-gradient(90deg,rgba(11,46,19,0.94)_0%,rgba(11,46,19,0.72)_42%,rgba(11,46,19,0.22)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(6,45,18,0.84)_0%,rgba(6,45,18,0.58)_40%,rgba(6,45,18,0.24)_70%,rgba(6,45,18,0.1)_100%)] sm:bg-[linear-gradient(90deg,rgba(6,45,18,0.84)_0%,rgba(6,45,18,0.58)_40%,rgba(6,45,18,0.24)_70%,rgba(6,45,18,0.1)_100%)]" />
+      <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-forest-950/30 to-transparent sm:hidden" />
 
-      <div className="relative mx-auto flex min-h-[64svh] max-w-7xl flex-col justify-between px-4 py-10 sm:min-h-0 sm:justify-center sm:px-6 sm:py-14 md:py-28 lg:px-8">
-        <div className="flex min-h-[calc(64svh-5rem)] max-w-xl flex-col justify-between sm:min-h-0 sm:max-w-2xl sm:justify-start">
+      <div className="relative mx-auto flex min-h-[80svh] max-w-7xl flex-col px-6 py-0 sm:min-h-0 sm:justify-center sm:px-6 sm:py-14 md:py-28 lg:px-8">
+        <div className="flex max-w-[300px] flex-col pt-[12svh] sm:min-h-0 sm:max-w-2xl sm:justify-start sm:pt-0">
           <div>
-            <h1 className="font-display text-4xl leading-[1.04] text-cream sm:text-6xl sm:leading-[0.98] lg:text-7xl">
+            <h1 className="font-display text-[42px] leading-[0.95] text-cream sm:hidden">
+              <span className="block">Plant-Based</span>
+              <span className="block">Comfort Food</span>
+              <span className="block">in Portland</span>
+            </h1>
+            <h1 className="hidden font-display text-4xl leading-[1.04] text-cream sm:block sm:text-6xl sm:leading-[0.98] lg:text-7xl">
               Plant-Based Comfort Food in Portland
             </h1>
+            <p className="mt-5 max-w-[15rem] text-base font-medium leading-6 text-cream/90 sm:hidden">
+              Vegan comfort food and catering made with soul
+            </p>
             <p className="mt-4 hidden max-w-md text-base leading-7 text-cream/90 sm:mt-6 sm:block sm:max-w-xl sm:text-xl sm:leading-8">
               Vegan comfort food and catering made with soul
             </p>
           </div>
 
-          <div className="grid max-w-sm gap-3 sm:mt-8 sm:max-w-none sm:flex sm:flex-row">
-            <ButtonLink href="#menu" variant="light">
+          <div className="mt-7 grid w-[240px] gap-4 sm:mt-8 sm:w-auto sm:max-w-none sm:flex sm:flex-row">
+            <ButtonLink href="#menu" variant="light" className="h-[52px] px-6 sm:h-auto sm:px-5">
               <UtensilsCrossed className="h-5 w-5" />
               View Menu
             </ButtonLink>
@@ -185,7 +194,7 @@ function Hero() {
             </ButtonLink>
             <a
               href="#catering"
-              className="inline-flex justify-center text-sm font-bold text-cream underline decoration-cream/35 underline-offset-4 sm:hidden"
+              className="inline-flex justify-start text-sm font-bold text-cream underline decoration-cream/40 decoration-2 underline-offset-4 sm:hidden"
             >
               Ask about catering
             </a>
