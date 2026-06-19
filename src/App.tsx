@@ -161,12 +161,10 @@ function Hero() {
         alt="Vegan soul food bowl with mac and cheese, greens, black-eyed peas, sweet potato mash, and crispy chick'n"
         className="absolute inset-0 h-full w-full scale-[1.06] object-cover object-[52%_center] sm:scale-100 sm:object-center"
       />
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(6,45,18,0.2)_0%,rgba(6,45,18,0.08)_58%,rgba(6,45,18,0)_100%)] sm:bg-[linear-gradient(90deg,rgba(6,45,18,0.62)_0%,rgba(6,45,18,0.34)_42%,rgba(6,45,18,0.12)_72%,rgba(6,45,18,0.02)_100%)]" />
-      <div className="absolute left-0 top-0 h-[58%] w-full bg-[radial-gradient(ellipse_at_22%_18%,rgba(6,45,18,0.9)_0%,rgba(6,45,18,0.72)_30%,rgba(6,45,18,0.34)_55%,rgba(6,45,18,0)_82%)] sm:hidden" />
-      <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-forest-950/18 to-transparent sm:hidden" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_3%_11%,rgba(6,45,18,0.86)_0%,rgba(6,45,18,0.74)_22%,rgba(6,45,18,0.46)_42%,rgba(6,45,18,0.18)_62%,rgba(6,45,18,0.04)_78%,rgba(6,45,18,0)_92%),linear-gradient(90deg,rgba(6,45,18,0.1)_0%,rgba(6,45,18,0.03)_44%,rgba(6,45,18,0)_72%)] sm:bg-[linear-gradient(90deg,rgba(6,45,18,0.62)_0%,rgba(6,45,18,0.34)_42%,rgba(6,45,18,0.12)_72%,rgba(6,45,18,0.02)_100%)]" />
 
-      <div className="relative mx-auto flex min-h-[90svh] max-w-7xl flex-col px-6 py-0 sm:min-h-0 sm:justify-center sm:px-6 sm:py-14 md:py-28 lg:px-8">
-        <div className="flex max-w-[260px] flex-col pt-[13svh] sm:min-h-0 sm:max-w-2xl sm:justify-start sm:pt-0">
+      <div className="relative mx-auto flex min-h-[90svh] max-w-7xl flex-col px-4 py-0 sm:min-h-0 sm:justify-center sm:px-6 sm:py-14 md:py-28 lg:px-8">
+        <div className="flex max-w-[260px] flex-col pt-[8svh] sm:min-h-0 sm:max-w-2xl sm:justify-start sm:pt-0">
           <div>
             <h1 className="font-display text-[44px] leading-[0.93] text-cream sm:hidden">
               <span className="block">Plant-Based</span>
