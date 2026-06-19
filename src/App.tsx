@@ -4,9 +4,12 @@ import {
   Clock,
   HeartHandshake,
   Instagram,
+  Menu,
   Sparkles,
   UtensilsCrossed,
+  X,
 } from "lucide-react";
+import { useState } from "react";
 import type { ReactNode } from "react";
 
 const images = {
@@ -96,6 +99,8 @@ function App() {
 }
 
 function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <header className="sticky top-0 z-50 border-b border-forest-950/10 bg-cream/95 shadow-sm backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-2.5 sm:gap-4 sm:px-6 sm:py-3 lg:px-8">
@@ -118,18 +123,29 @@ function Header() {
           ))}
         </nav>
 
+        <button
+          type="button"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-forest-950/10 bg-white text-forest-950 shadow-sm md:hidden"
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isMenuOpen}
+          onClick={() => setIsMenuOpen((open) => !open)}
+        >
+          {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
       </div>
 
-      <nav className="flex gap-2 overflow-x-auto border-t border-forest-950/10 px-4 py-2 text-xs font-semibold text-forest-950 md:hidden [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-        {navItems.map((item) => (
-          <span
-            key={item}
-            className="shrink-0 whitespace-nowrap rounded-full border border-forest-950/10 bg-white/75 px-3 py-1.5 text-center"
-          >
-            {item}
-          </span>
-        ))}
-      </nav>
+      {isMenuOpen ? (
+        <nav className="absolute right-4 top-[calc(100%+0.5rem)] w-44 rounded-xl border border-forest-950/10 bg-cream p-2 text-sm font-semibold text-forest-950 shadow-warm md:hidden">
+          {navItems.map((item) => (
+            <span
+              key={item}
+              className="block cursor-default rounded-lg px-3 py-2.5 hover:bg-white/70"
+            >
+              {item}
+            </span>
+          ))}
+        </nav>
+      ) : null}
     </header>
   );
 }
@@ -153,7 +169,7 @@ function Hero() {
             <h1 className="font-display text-4xl leading-[1.04] text-cream sm:text-6xl sm:leading-[0.98] lg:text-7xl">
               Plant-Based Comfort Food in Portland
             </h1>
-            <p className="mt-4 max-w-md text-base leading-7 text-cream/90 sm:mt-6 sm:max-w-xl sm:text-xl sm:leading-8">
+            <p className="mt-4 hidden max-w-md text-base leading-7 text-cream/90 sm:mt-6 sm:block sm:max-w-xl sm:text-xl sm:leading-8">
               Vegan comfort food and catering made with soul
             </p>
           </div>
@@ -300,13 +316,6 @@ function Markets() {
               </article>
             ))}
           </div>
-
-          <a
-            href={contactHref}
-            className="mt-4 inline-flex text-sm font-semibold text-forest-700 underline decoration-forest-700/30 underline-offset-4 hover:text-forest-950"
-          >
-            Follow Instagram for weekly menus.
-          </a>
         </div>
 
         <div className="order-2 lg:order-2">
