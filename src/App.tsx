@@ -341,7 +341,7 @@ function About() {
         />
         <div className="order-1 lg:order-2">
           <h2 className="font-display text-3xl text-forest-950 sm:text-5xl">
-            Comfort Food, Made Plant-Based
+            Comfort Food, Made <span className="whitespace-nowrap">Plant-Based</span>
           </h2>
           <div className="mt-4 space-y-3 text-base leading-7 text-bark/75 sm:mt-5 sm:space-y-4 sm:leading-8">
             <p>
