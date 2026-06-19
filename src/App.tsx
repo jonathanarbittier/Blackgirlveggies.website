@@ -154,20 +154,21 @@ function Hero() {
   return (
     <section
       id="top"
-      className="relative isolate min-h-[88svh] overflow-hidden bg-forest-950 text-cream sm:min-h-[calc(88svh-4rem)]"
+      className="relative isolate min-h-[90svh] overflow-hidden bg-forest-950 text-cream sm:min-h-[calc(88svh-4rem)]"
     >
       <img
         src={images.hero}
         alt="Vegan soul food bowl with mac and cheese, greens, black-eyed peas, sweet potato mash, and crispy chick'n"
-        className="absolute inset-0 h-full w-full object-cover object-[62%_center] sm:object-center"
+        className="absolute inset-0 h-full w-full scale-[1.06] object-cover object-[52%_center] sm:scale-100 sm:object-center"
       />
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(6,45,18,0.82)_0%,rgba(6,45,18,0.45)_48%,rgba(6,45,18,0.12)_100%)] sm:bg-[linear-gradient(90deg,rgba(6,45,18,0.84)_0%,rgba(6,45,18,0.58)_40%,rgba(6,45,18,0.24)_70%,rgba(6,45,18,0.1)_100%)]" />
-      <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-forest-950/30 to-transparent sm:hidden" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(6,45,18,0.2)_0%,rgba(6,45,18,0.08)_58%,rgba(6,45,18,0)_100%)] sm:bg-[linear-gradient(90deg,rgba(6,45,18,0.62)_0%,rgba(6,45,18,0.34)_42%,rgba(6,45,18,0.12)_72%,rgba(6,45,18,0.02)_100%)]" />
+      <div className="absolute left-0 top-0 h-[58%] w-full bg-[radial-gradient(ellipse_at_22%_18%,rgba(6,45,18,0.9)_0%,rgba(6,45,18,0.72)_30%,rgba(6,45,18,0.34)_55%,rgba(6,45,18,0)_82%)] sm:hidden" />
+      <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-forest-950/18 to-transparent sm:hidden" />
 
-      <div className="relative mx-auto flex min-h-[88svh] max-w-7xl flex-col px-6 py-0 sm:min-h-0 sm:justify-center sm:px-6 sm:py-14 md:py-28 lg:px-8">
-        <div className="flex max-w-[330px] flex-col pt-[14svh] sm:min-h-0 sm:max-w-2xl sm:justify-start sm:pt-0">
+      <div className="relative mx-auto flex min-h-[90svh] max-w-7xl flex-col px-6 py-0 sm:min-h-0 sm:justify-center sm:px-6 sm:py-14 md:py-28 lg:px-8">
+        <div className="flex max-w-[260px] flex-col pt-[13svh] sm:min-h-0 sm:max-w-2xl sm:justify-start sm:pt-0">
           <div>
-            <h1 className="font-display text-[48px] leading-[0.93] text-cream sm:hidden">
+            <h1 className="font-display text-[44px] leading-[0.93] text-cream sm:hidden">
               <span className="block">Plant-Based</span>
               <span className="block">Comfort Food</span>
               <span className="block">in Portland</span>
@@ -183,7 +184,7 @@ function Hero() {
             </p>
           </div>
 
-          <div className="mt-7 grid w-[260px] gap-5 sm:mt-8 sm:w-auto sm:max-w-none sm:flex sm:flex-row">
+          <div className="mt-7 grid w-[225px] gap-5 sm:mt-8 sm:w-auto sm:max-w-none sm:flex sm:flex-row">
             <ButtonLink href="#menu" variant="light" className="h-[52px] px-6 sm:h-auto sm:px-5">
               <UtensilsCrossed className="h-5 w-5" />
               View Menu
@@ -346,7 +347,7 @@ function About() {
         <img
           src={images.owner}
           alt="Friendly Portland farmers market food vendor"
-          className="order-2 aspect-[4/3] w-full rounded-xl object-cover shadow-warm sm:aspect-[4/5] lg:order-1"
+          className="order-2 aspect-[4/3] w-full rounded-xl object-cover object-[50%_28%] shadow-warm sm:aspect-[4/5] sm:object-center lg:order-1"
         />
         <div className="order-1 lg:order-2">
           <h2 className="font-display text-3xl text-forest-950 sm:text-5xl">
