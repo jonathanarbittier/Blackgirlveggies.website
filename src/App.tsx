@@ -4,7 +4,6 @@ import {
   Clock,
   HeartHandshake,
   Instagram,
-  Phone,
   Sparkles,
   UtensilsCrossed,
 } from "lucide-react";
@@ -81,20 +80,17 @@ const instagramUpdates = [
 
 function App() {
   return (
-    <div className="min-h-screen bg-cream pb-20 text-ink md:pb-0">
+    <div className="min-h-screen bg-cream text-ink">
       <Header />
       <main>
         <Hero />
-        <QuickActionBar />
         <FeaturedMenu />
         <Markets />
         <Catering />
         <About />
         <InstagramUpdates />
-        <Contact />
       </main>
       <Footer />
-      <MobileStickyCta />
     </div>
   );
 }
@@ -122,12 +118,18 @@ function Header() {
           ))}
         </nav>
 
-        <ButtonLink href={contactHref} variant="secondary" size="sm" className="px-3 py-2 text-xs sm:px-4 sm:text-sm">
-          Order / Contact
-        </ButtonLink>
-
       </div>
 
+      <nav className="flex gap-2 overflow-x-auto border-t border-forest-950/10 px-4 py-2 text-xs font-semibold text-forest-950 md:hidden [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+        {navItems.map((item) => (
+          <span
+            key={item}
+            className="shrink-0 whitespace-nowrap rounded-full border border-forest-950/10 bg-white/75 px-3 py-1.5 text-center"
+          >
+            {item}
+          </span>
+        ))}
+      </nav>
     </header>
   );
 }
@@ -145,16 +147,18 @@ function Hero() {
       />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,46,19,0.88)_0%,rgba(11,46,19,0.70)_44%,rgba(11,46,19,0.32)_100%)] sm:bg-[linear-gradient(90deg,rgba(11,46,19,0.94)_0%,rgba(11,46,19,0.72)_42%,rgba(11,46,19,0.22)_100%)]" />
 
-      <div className="relative mx-auto flex max-w-7xl items-center px-4 py-10 sm:px-6 sm:py-14 md:py-28 lg:px-8">
-        <div className="max-w-xl sm:max-w-2xl">
-          <h1 className="font-display text-4xl leading-[1.04] text-cream sm:text-6xl sm:leading-[0.98] lg:text-7xl">
-            Plant-Based Comfort Food in Portland
-          </h1>
-          <p className="mt-4 max-w-md text-base leading-7 text-cream/90 sm:mt-6 sm:max-w-xl sm:text-xl sm:leading-8">
-            Vegan comfort food and catering made with soul in PDX.
-          </p>
+      <div className="relative mx-auto flex min-h-[64svh] max-w-7xl flex-col justify-between px-4 py-10 sm:min-h-0 sm:justify-center sm:px-6 sm:py-14 md:py-28 lg:px-8">
+        <div className="flex min-h-[calc(64svh-5rem)] max-w-xl flex-col justify-between sm:min-h-0 sm:max-w-2xl sm:justify-start">
+          <div>
+            <h1 className="font-display text-4xl leading-[1.04] text-cream sm:text-6xl sm:leading-[0.98] lg:text-7xl">
+              Plant-Based Comfort Food in Portland
+            </h1>
+            <p className="mt-4 max-w-md text-base leading-7 text-cream/90 sm:mt-6 sm:max-w-xl sm:text-xl sm:leading-8">
+              Vegan comfort food and catering made with soul
+            </p>
+          </div>
 
-          <div className="mt-9 grid max-w-sm gap-3 sm:mt-8 sm:max-w-none sm:flex sm:flex-row">
+          <div className="grid max-w-sm gap-3 sm:mt-8 sm:max-w-none sm:flex sm:flex-row">
             <ButtonLink href="#menu" variant="light">
               <UtensilsCrossed className="h-5 w-5" />
               View Menu
@@ -171,30 +175,6 @@ function Hero() {
             </a>
           </div>
         </div>
-      </div>
-    </section>
-  );
-}
-
-function QuickActionBar() {
-  const actions = [
-    { label: "Order", href: contactHref },
-    { label: "Catering", href: "#catering" },
-    { label: "Market Times", href: "#markets" },
-  ];
-
-  return (
-    <section className="bg-cream px-4 py-3 sm:hidden">
-      <div className="grid grid-cols-3 gap-2">
-        {actions.map((action) => (
-          <a
-            key={action.label}
-            href={action.href}
-            className="rounded-full border border-forest-950/10 bg-white px-3 py-2 text-center text-xs font-bold text-forest-950 shadow-sm"
-          >
-            {action.label}
-          </a>
-        ))}
       </div>
     </section>
   );
@@ -220,7 +200,7 @@ function FeaturedMenu() {
           {menuItems.map((item) => (
             <article
               key={item.title}
-              className="w-[84vw] max-w-[330px] shrink-0 overflow-hidden rounded-xl border border-bark/10 bg-white shadow-soft sm:w-auto sm:max-w-none"
+              className="flex w-[84vw] max-w-[330px] shrink-0 flex-col overflow-hidden rounded-xl border border-bark/10 bg-white shadow-soft sm:w-auto sm:max-w-none"
             >
               <div className="relative h-[205px] overflow-hidden bg-parchment sm:aspect-[4/3] sm:h-auto">
                 <img
@@ -229,12 +209,12 @@ function FeaturedMenu() {
                   className="h-full w-full object-cover object-center transition duration-500 hover:scale-105"
                 />
               </div>
-              <div className="p-4 sm:p-5">
+              <div className="flex flex-1 flex-col p-4 sm:p-5">
                 <h3 className="font-display text-xl text-forest-950 sm:text-2xl">{item.title}</h3>
                 <p className="mt-2 text-sm leading-6 text-bark/75">
                   {item.description}
                 </p>
-                <ButtonLink href={contactHref} variant="card" size="sm" className="mt-4 py-2">
+                <ButtonLink href={contactHref} variant="card" size="sm" className="mt-auto pt-2">
                   Order
                   <ArrowRight className="h-4 w-4" />
                 </ButtonLink>
@@ -411,35 +391,6 @@ function InstagramUpdates() {
   );
 }
 
-function Contact() {
-  return (
-    <section id="contact" className="bg-cream px-4 py-12 sm:px-6 sm:py-20 lg:px-8">
-      <div className="mx-auto max-w-3xl text-center">
-        <h2 className="font-display text-3xl text-forest-950 sm:text-5xl">
-          Ready to Order?
-        </h2>
-        <p className="mx-auto mt-3 max-w-xl text-base leading-7 text-bark/75">
-          Message us for market pickup, weekly plates, and catering inquiries.
-        </p>
-        <div className="mt-6 grid gap-3 sm:grid-cols-3">
-          <ButtonLink href={contactHref} variant="secondary">
-            <Instagram className="h-5 w-5" />
-            DM on Instagram
-          </ButtonLink>
-          <ButtonLink href="tel:+15035161422" variant="secondary">
-            <Phone className="h-5 w-5" />
-            Call / Text
-          </ButtonLink>
-          <ButtonLink href={contactHref} variant="secondary">
-            <HeartHandshake className="h-5 w-5" />
-            Catering Inquiry
-          </ButtonLink>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function Footer() {
   return (
     <footer className="bg-forest-950 px-4 py-8 text-cream sm:px-6 sm:py-10 lg:px-8">
@@ -466,16 +417,6 @@ function Footer() {
         </div>
       </div>
     </footer>
-  );
-}
-
-function MobileStickyCta() {
-  return (
-    <div className="pointer-events-none fixed inset-x-0 bottom-3 z-50 flex justify-center px-4 md:hidden">
-      <ButtonLink href={contactHref} variant="secondary" size="sm" className="pointer-events-auto px-6 shadow-[0_10px_30px_rgba(11,46,19,0.28)]">
-        Order / Contact
-      </ButtonLink>
-    </div>
   );
 }
 
