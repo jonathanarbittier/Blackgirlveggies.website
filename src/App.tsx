@@ -154,20 +154,20 @@ function Hero() {
   return (
     <section
       id="top"
-      className="relative isolate min-h-[80svh] overflow-hidden bg-forest-950 text-cream sm:min-h-[calc(88svh-4rem)]"
+      className="relative isolate min-h-[88svh] overflow-hidden bg-forest-950 text-cream sm:min-h-[calc(88svh-4rem)]"
     >
       <img
         src={images.hero}
         alt="Vegan soul food bowl with mac and cheese, greens, black-eyed peas, sweet potato mash, and crispy chick'n"
-        className="absolute inset-0 h-full w-full object-cover object-[65%_center] sm:object-center"
+        className="absolute inset-0 h-full w-full object-cover object-[62%_center] sm:object-center"
       />
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(6,45,18,0.84)_0%,rgba(6,45,18,0.58)_40%,rgba(6,45,18,0.24)_70%,rgba(6,45,18,0.1)_100%)] sm:bg-[linear-gradient(90deg,rgba(6,45,18,0.84)_0%,rgba(6,45,18,0.58)_40%,rgba(6,45,18,0.24)_70%,rgba(6,45,18,0.1)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(6,45,18,0.82)_0%,rgba(6,45,18,0.45)_48%,rgba(6,45,18,0.12)_100%)] sm:bg-[linear-gradient(90deg,rgba(6,45,18,0.84)_0%,rgba(6,45,18,0.58)_40%,rgba(6,45,18,0.24)_70%,rgba(6,45,18,0.1)_100%)]" />
       <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-forest-950/30 to-transparent sm:hidden" />
 
-      <div className="relative mx-auto flex min-h-[80svh] max-w-7xl flex-col px-6 py-0 sm:min-h-0 sm:justify-center sm:px-6 sm:py-14 md:py-28 lg:px-8">
-        <div className="flex max-w-[300px] flex-col pt-[12svh] sm:min-h-0 sm:max-w-2xl sm:justify-start sm:pt-0">
+      <div className="relative mx-auto flex min-h-[88svh] max-w-7xl flex-col px-6 py-0 sm:min-h-0 sm:justify-center sm:px-6 sm:py-14 md:py-28 lg:px-8">
+        <div className="flex max-w-[330px] flex-col pt-[14svh] sm:min-h-0 sm:max-w-2xl sm:justify-start sm:pt-0">
           <div>
-            <h1 className="font-display text-[42px] leading-[0.95] text-cream sm:hidden">
+            <h1 className="font-display text-[48px] leading-[0.93] text-cream sm:hidden">
               <span className="block">Plant-Based</span>
               <span className="block">Comfort Food</span>
               <span className="block">in Portland</span>
@@ -183,7 +183,7 @@ function Hero() {
             </p>
           </div>
 
-          <div className="mt-7 grid w-[240px] gap-4 sm:mt-8 sm:w-auto sm:max-w-none sm:flex sm:flex-row">
+          <div className="mt-7 grid w-[260px] gap-5 sm:mt-8 sm:w-auto sm:max-w-none sm:flex sm:flex-row">
             <ButtonLink href="#menu" variant="light" className="h-[52px] px-6 sm:h-auto sm:px-5">
               <UtensilsCrossed className="h-5 w-5" />
               View Menu
